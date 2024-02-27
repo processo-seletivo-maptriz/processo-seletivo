@@ -17,10 +17,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
     private String name;
-    @Column(unique = true)
-    @NotBlank(message = "Campo requerido")
     private String email;
-    @NotBlank(message = "Campo requerido")
+
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)

@@ -6,11 +6,18 @@ import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class ContactDTO {
     private Long id;
+    @Size(min = 3, max = 80, message = "Nome precisar ter de 3 a 80 caracteres")
+    @NotNull(message = "Campo requerido")
     private String name;
     private String cep;
     private String email;
+    @NotBlank(message = "Campo requerido")
     private String phone;
     @Column(unique = true)
     private String cnpj;

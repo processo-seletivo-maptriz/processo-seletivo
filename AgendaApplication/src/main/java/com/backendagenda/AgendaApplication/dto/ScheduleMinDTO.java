@@ -10,12 +10,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScheduleDTO {
+public class ScheduleMinDTO {
 
     private Long id;
-    @Size(min = 3, max = 80, message = "Nome precisar ter de 3 a 80 caracteres")
-    @NotNull(message = "Campo requerido")
-    private String name;
     private LocalDateTime createdAt;
     private LocalDateTime expirationDate;
     private LocalDateTime updatedAt;
@@ -24,9 +21,8 @@ public class ScheduleDTO {
     private List<ContactDTO> contacts = new ArrayList<ContactDTO>();
     // Construtor
 
-    public ScheduleDTO(Schedule entity) {
+    public ScheduleMinDTO(Schedule entity) {
         this.id = entity.getId();
-        this.name = entity.getName();
         this.createdAt = entity.getCreatedAt();
         this.expirationDate = entity.getExpirationDate().atStartOfDay();
         this.updatedAt = entity.getUpdatedAt();
@@ -38,9 +34,8 @@ public class ScheduleDTO {
         }
     }
 
-    public ScheduleDTO(Long id, String name, LocalDateTime createdAt, LocalDateTime expirationDate, LocalDateTime updatedAt) {
+    public ScheduleMinDTO(Long id, LocalDateTime createdAt, LocalDateTime expirationDate, LocalDateTime updatedAt) {
         this.id = id;
-        this.name = name;
         this.createdAt = createdAt;
         this.expirationDate = expirationDate;
         this.updatedAt = updatedAt;
@@ -54,13 +49,6 @@ public class ScheduleDTO {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public LocalDateTime getCreatedAt() {
         return createdAt;

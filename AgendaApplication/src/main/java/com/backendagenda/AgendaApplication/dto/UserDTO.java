@@ -1,11 +1,17 @@
 package com.backendagenda.AgendaApplication.dto;
 
 import com.backendagenda.AgendaApplication.entities.User;
+import jakarta.persistence.Column;
+
+import javax.validation.constraints.NotBlank;
 
 public class UserDTO {
     private Long id;
     private String name;
+    @Column(unique = true)
+    @NotBlank(message = "Campo requerido")
     private String email;
+    @NotBlank(message = "Campo requerido")
     private String password;
 
     public UserDTO() {

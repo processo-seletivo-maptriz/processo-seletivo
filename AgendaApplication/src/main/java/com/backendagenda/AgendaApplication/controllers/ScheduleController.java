@@ -2,6 +2,7 @@ package com.backendagenda.AgendaApplication.controllers;
 
 import com.backendagenda.AgendaApplication.dto.ContactDTO;
 import com.backendagenda.AgendaApplication.dto.ScheduleDTO;
+import com.backendagenda.AgendaApplication.dto.ScheduleMinDTO;
 import com.backendagenda.AgendaApplication.services.ScheduleService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,16 +54,13 @@ public class ScheduleController {
     }
 
     @PutMapping("/update/{scheduleId}")
-    public ResponseEntity<ScheduleDTO> updateSchedule(@PathVariable Long scheduleId, @RequestBody ScheduleDTO scheduleDetails) {
+    public ResponseEntity<ScheduleDTO> updateSchedule(@PathVariable Long scheduleId,@Valid @RequestBody ScheduleDTO scheduleDetails) {
         return ResponseEntity.ok(scheduleService.updateSchedule(scheduleId, scheduleDetails));
     }
     // Endpoint para adicionar um contato a uma agenda
     @PostMapping("/{scheduleId}/contacts")
-    public ResponseEntity<ScheduleDTO> addContactToSchedule(@PathVariable Long scheduleId, @RequestBody ScheduleDTO dto) {
+    public ResponseEntity<ScheduleMinDTO> updateContactToSchedule(@PathVariable Long scheduleId, @Valid @RequestBody ScheduleMinDTO dto) {
 
-        for (ContactDTO dto1 :dto.getContacts()) {
-            System.out.println("corpo do dto" + dto.getName());
-        }
-        return ResponseEntity.ok(scheduleService.addContactToSchedule(scheduleId, dto));
+        return ResponseEntity.ok(scheduleService.updateContactToSchedule(scheduleId, dto));
     }
 }

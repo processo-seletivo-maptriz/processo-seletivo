@@ -3,7 +3,7 @@ package com.backendagenda.AgendaApplication.services;
 import com.backendagenda.AgendaApplication.dto.UserDTO;
 import com.backendagenda.AgendaApplication.entities.User;
 import com.backendagenda.AgendaApplication.repositories.UserRepository;
-import org.apache.velocity.exception.ResourceNotFoundException;
+import com.backendagenda.AgendaApplication.services.exceptions.ResourNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -27,7 +27,6 @@ public class UserService implements UserDetailsService{
     public Page<UserDTO> getAllUsers(String name, Pageable pageable) {
         Page<User> users = userRepository.searchByName(name, pageable);
         return  users.map(UserDTO::new);
-
     }
 
     public UserDTO getUserById(Long id) {
@@ -51,7 +50,7 @@ public class UserService implements UserDetailsService{
             userRepository.deleteById(id);
         }
         catch (EmptyResultDataAccessException e) {
-            throw new ResourceNotFoundException("Recurso não encontrado");
+            throw new ResourNotFoundException("Recurso não encontrado");
         }
         catch (DataIntegrityViolationException e) {
             throw new RuntimeException("Não é possível excluir o usuário com o ID: " + id + ". Há uma violação de integridade referencial.");
@@ -70,7 +69,7 @@ public class UserService implements UserDetailsService{
             User updatedUser = userRepository.save(existingUser);
             return new UserDTO(updatedUser);
         } else {
-            throw new ResourceNotFoundException("Usuário não encontrado com o ID: " + id);
+            throw new ResourNotFoundException("Usuário não encontrado com o ID: " + id);
         }
     }
 
