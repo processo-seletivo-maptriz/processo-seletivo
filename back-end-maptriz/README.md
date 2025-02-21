@@ -19,7 +19,6 @@ Desenvolva uma API REST para atender às necessidades de back-end de uma agenda 
 * Validação de CPFs ou CEPs inválidos.
 * Armazenamento dos dados em uma base de dados SQL.
 * Tratamento de exceções em caso de erro na base de dados ou recebimento de dados inválidos.
-* Envio de e-mail para cada registro realizado como notificação, utilizando o endpoint https://run.mocky.io/v3/c9ec2ca3-a7f5-41d0-8550-b859508f4948 (requisição GET).
 
 Requisitos opcionais:
 
@@ -28,4 +27,5 @@ Requisitos opcionais:
 * Implementação de uma base SQL com georreferenciamento para armazenar coordenadas em um tipo dedicado de coluna.
 * Consultas mais complexas, como filtrar todos os registros de pessoa física cujo CPF começa com os caracteres "018".
 * Envio de mensagens de resposta traduzidas para pelo menos mais um idioma.
-* Restrição de operações da API apenas para usuários autenticados, utilizando o endpoint https://run.mocky.io/v3/970f7229-1a5e-4905-bac8-81aaa9d51e17 (GET) para autenticação/obtenção dos dados do usuário atual, se necessário.
+* Envio de e-mail para cada registro realizado como notificação, utilizando um endpoint mockado (API mockada pode ser qualquer uma da escolha do desenvolvedor).
+* Restrição de operações da API apenas para usuários autenticados, utilizando um endpoint mockado para autenticação/obtenção dos dados do usuário atual, se necessário.

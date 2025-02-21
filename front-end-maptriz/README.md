@@ -28,8 +28,7 @@ Funcionalidades opcionais:
 Itens não avaliados:
 
 * Design da interface.
-* Autenticação do usuário (apontando para https://run.mocky.io/v3/970f7229-1a5e-4905-bac8-81aaa9d51e17).
-* Nota: Para a funcionalidade de notificação por e-mail, utilize https://run.mocky.io/v3/c9ec2ca3-a7f5-41d0-8550-b859508f4948.
+* Autenticação do usuário.
 
 A aplicação deve ser executável localmente e ter tratamento de erros adequado, incluindo feedback ao usuário e evitando falhas graves. Atente-se às comunicações com APIs e formulários.
 
